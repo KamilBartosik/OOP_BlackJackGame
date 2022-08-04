@@ -1,11 +1,4 @@
 class Player:
-    '''
-    - setting a player's balance
-    - taking from player's input an amount of bet
-    - returning amount of bet (needed to save the amount as variable)
-    - adding player's winnings
-    - printing the players balance
-    '''
 
     def __init__(self, balance=500):
 

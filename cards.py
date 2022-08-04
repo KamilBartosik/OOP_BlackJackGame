@@ -3,8 +3,6 @@ from cards_values import values
 
 class Cards:
 
-    # Makes cards as objects and uses them in Deck class
-
     def __init__(self, rank, suit):
         self.rank = rank
         self.suit = suit
