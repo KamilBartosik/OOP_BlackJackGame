@@ -1,3 +1,3 @@
-# Black Jack game created by using oriented object programming
+# Black Jack game created by using oriented object programming (in progress...)
 -------------
 Description will be added in the future...
