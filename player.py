@@ -24,3 +24,16 @@ class Player:
                     print(f'You do not have that amount of money, your balance is {self.balance}$!')
 
         return bet_amount
+
+    def amount_of_bet(self, bet_amount):
+
+        return bet_amount
+
+    def add_money(self, amount):
+
+        self.balance += int(amount)
+        print(f'Your actual balance: {self.balance}$')
+
+    def __str__(self):
+
+        return f'Your actual balance: {self.balance}$'
