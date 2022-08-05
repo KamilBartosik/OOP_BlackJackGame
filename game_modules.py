@@ -46,10 +46,7 @@ class GameModules:
 
             else:
                 if dec == 'stand':
-                    if self.sum_value()[-1] < 17:
-                        self.dealer_cards.append(self.deck.take_card())
-                    else:
-                        break
+                    break
 
                 else:
                     self.player_cards.append(self.deck.take_card())
@@ -61,18 +58,25 @@ class GameModules:
                         self.amount_of_bet = 0
                         break
 
-        display(amount_of_bet, balance, round_nb, self.player_cards, self.dealer_cards, self.sum_value)
-        if self.sum_value()[0] == 21 > self.sum_value()[-1] and len(self.player_cards) == 2:
-            print('\nBLACKJACK! You won 1.5 your bet!')
-            self.amount_of_bet = self.amount_of_bet * 2.5
+        if self.sum_value()[0] < 22:
+            while self.sum_value()[-1] < 17:
+                if self.sum_value()[0] == 21 and len(self.player_cards) == 2:
+                    break
+                else:
+                    self.dealer_cards.append(self.deck.take_card())
 
-        elif self.sum_value()[0] > self.sum_value()[-1] or self.sum_value()[-1] > 21:
-            print('\nYou won!')
-            self.amount_of_bet = self.amount_of_bet * 2
+            display(amount_of_bet, balance, round_nb, self.player_cards, self.dealer_cards, self.sum_value)
+            if self.sum_value()[0] == 21 > self.sum_value()[-1] and len(self.player_cards) == 2:
+                print('\nBLACKJACK! You won 1.5 your bet!')
+                self.amount_of_bet = self.amount_of_bet * 2.5
 
-        elif self.sum_value()[0] == self.sum_value()[-1]:
-            print('\nIt is a tie')
+            elif self.sum_value()[0] > self.sum_value()[-1] or self.sum_value()[-1] > 21:
+                print('\nYou won!')
+                self.amount_of_bet = self.amount_of_bet * 2
 
-        else:
-            print('\nYou lost')
-            self.amount_of_bet = 0
+            elif self.sum_value()[0] == self.sum_value()[-1]:
+                print('\nIt is a tie')
+
+            else:
+                print('\nYou lost')
+                self.amount_of_bet = 0
