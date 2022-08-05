@@ -1,33 +1,28 @@
 class Player:
 
-    def __init__(self, balance=500):
+    def __init__(self, balance=500, bet_amount=0):
 
         self.balance = balance
+        self.bet_amount = bet_amount
 
     def place_bet(self):
 
         while True:
             try:
-                bet_amount = int(input('Place a bet: '))
+                self.bet_amount = int(input('Place a bet: '))
 
             except:
                 print(f'Please provide a number in range(0, {self.balance})')
 
             else:
-                if self.balance >= bet_amount > 0:
+                if self.balance >= self.bet_amount > 0:
 
-                    self.balance -= bet_amount
-                    print(f'Your bet: {bet_amount}$. Your actual balance: {self.balance}$.')
+                    self.balance -= self.bet_amount
+                    print(f'Your bet: {self.bet_amount}$. Your actual balance: {self.balance}$.')
                     break
 
                 else:
                     print(f'You do not have that amount of money, your balance is {self.balance}$!')
-
-        return bet_amount
-
-    def amount_of_bet(self, bet_amount):
-
-        return bet_amount
 
     def add_money(self, amount):
 
