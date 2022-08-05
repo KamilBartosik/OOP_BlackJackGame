@@ -1,5 +1,6 @@
 def display(amount, balance, round_nb, player_cards, dealer_cards, values, state='end of the round'):
     # clear_output() -> later add something here to clear previous output
+    print('\n\n\n\n\n' + '-' * 20)
     print('Blackjack game\n')
     print(f'Round {round_nb}')
     print(f'Your bet: {amount}$. Your actual balance: {balance}$.')

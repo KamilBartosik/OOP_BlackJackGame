@@ -3,7 +3,6 @@ from player import Player
 from game_modules import GameModules
 from functionalities import display, next_round
 
-
 print('\nWelcome to Blackjack Game!')
 balance = 500
 round_nb = 0
@@ -18,7 +17,8 @@ while True:
     deck = Deck()
     deck.shuffle()
 
-    bet = player.place_bet()
+    player.place_bet()
+    bet = player.bet_amount
     balance = player.balance
 
     player_cards = []
@@ -31,7 +31,7 @@ while True:
 
     game = GameModules(deck, player_cards, dealer_cards)
 
-    display(bet, balance, round_nb, player_cards, dealer_cards, 'player_round')
+    display(bet, balance, round_nb, player_cards, dealer_cards, game.sum_value(),'player_round')
 
     game.decision(bet, balance, round_nb)
 
