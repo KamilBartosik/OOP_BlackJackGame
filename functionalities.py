@@ -32,3 +32,21 @@ def next_round():
         return True
 
     return False
+
+
+def rules(file_path):
+
+    choices = ['yes', 'no']
+
+    while True:
+        familiar = input("\nAre you familiar with the rules of the game? (yes or no): ")
+
+        if familiar in choices:
+            break
+        else:
+            print("Please write 'yes' or 'no'")
+
+    if familiar == 'no':
+        with open(file_path, 'r') as f:
+            lines = f.read()
+            print(lines)
