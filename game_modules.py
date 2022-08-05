@@ -1,4 +1,4 @@
-from display import display
+from functionalities import display
 
 
 class GameModules:
@@ -35,12 +35,13 @@ class GameModules:
     def decision(self, amount_of_bet, balance, round_nb):
 
         self.amount_of_bet = amount_of_bet
+        available_choices = ['hit', 'stand']
 
         while True:
-            try:
-                dec = input("What is your move (hit or stand): ")
 
-            except:
+            dec = input("What is your move (hit or stand): ")
+
+            if dec not in available_choices:
                 print("Wrong move! Please input 'hit' or 'stand'")
 
             else:
