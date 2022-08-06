@@ -3,46 +3,59 @@ from player import Player
 from game_modules import GameModules
 from functionalities import display, next_round, rules
 
-rules('rules_description.txt')
-print('\nWelcome to Blackjack Game!')
-balance = 500
-round_nb = 0
 
-while True:
+def play_game(rules_func):
 
-    round_nb += 1
+    file_path = 'rules_description.txt'
+    print('\nWelcome to Blackjack Game!')
+    q_rules = rules_func(file_path)
+    if q_rules == 'yes':
 
-    player = Player(balance)
-    print(f'\n{player}')
+        print('\n' * 20 + '-' * 30)
+        print('\nWelcome to Blackjack Game!')
+        balance = 500
+        round_nb = 0
 
-    deck = Deck()
-    deck.shuffle()
+        while True:
 
-    player.place_bet()
-    bet = player.bet_amount
-    balance = player.balance
+            round_nb += 1
 
-    player_cards = []
-    dealer_cards = []
+            player = Player(balance)
+            print(f'\n{player}')
 
-    player_cards.append(deck.take_card())
-    dealer_cards.append(deck.take_card())
-    player_cards.append(deck.take_card())
-    dealer_cards.append(deck.take_card())
+            deck = Deck()
+            deck.shuffle()
 
-    game = GameModules(deck, player_cards, dealer_cards)
+            player.place_bet()
+            bet = player.bet_amount
+            balance = player.balance
 
-    display(bet, balance, round_nb, player_cards, dealer_cards, game.sum_value(), 'player_round')
+            player_cards = []
+            dealer_cards = []
 
-    game.decision(bet, balance, round_nb)
+            player_cards.append(deck.take_card())
+            dealer_cards.append(deck.take_card())
+            player_cards.append(deck.take_card())
+            dealer_cards.append(deck.take_card())
 
-    player.add_money(game.amount_of_bet)
-    balance = player.balance
+            game = GameModules(deck, player_cards, dealer_cards)
 
-    if balance == 0:
-        print(f'\nYou lost all of your money!\n\nGAME OVER')
-        break
+            display(bet, balance, round_nb, player_cards, dealer_cards, game.sum_value(), 'player_round')
 
-    if not next_round():
-        print(f'\nThanks for playing! You played {round_nb} rounds and end up with: {balance}$ ({balance - 500}$ profit)')
-        break
+            game.decision(bet, balance, round_nb)
+
+            player.add_money(game.amount_of_bet)
+            balance = player.balance
+
+            if balance == 0:
+                print(f'\nYou lost all of your money!\n\nGAME OVER')
+                break
+
+            if not next_round():
+                print(
+                    f'\nThanks for playing! You played {round_nb} rounds and end up with: {balance}$ ({balance - 500}$ profit)')
+                break
+
+
+if __name__ == '__main__':
+    play_game(rules)

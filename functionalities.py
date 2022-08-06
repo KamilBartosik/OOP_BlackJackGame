@@ -1,6 +1,6 @@
 def display(amount, balance, round_nb, player_cards, dealer_cards, values, state='end of the round'):
 
-    print('\n'*10 + '-'*20)
+    print('\n'*10 + '-'*30)
     print('Blackjack game\n')
     print(f'Round {round_nb}')
     print(f'Your bet: {amount}$. Your actual balance: {balance}$.')
@@ -50,3 +50,19 @@ def rules(file_path):
         with open(file_path, 'r') as f:
             lines = f.read()
             print(lines)
+
+        while True:
+            ready = input("\nReady to play? (yes or no): ")
+
+            if ready not in choices:
+                print("Please type 'yes' or 'no'")
+
+            else:
+                break
+    else:
+        ready = 'yes'
+
+    if ready == 'no':
+        print("\nToo bad :(\nSee you some other time!")
+
+    return ready
