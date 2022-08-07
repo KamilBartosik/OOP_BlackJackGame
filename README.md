@@ -1,3 +1,3 @@
-# Black Jack game created by using oriented object programming (in progress...)
+# Black Jack game created by using oriented object programming
 -------------
-Description will be added in the future...
+To play the game run the 'play.py' file.
